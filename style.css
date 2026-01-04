@@ -1,0 +1,431 @@
+/* Global Styling */
+*{
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+}
+*::selection{
+    color: white;
+    background-color: var(--black);
+}
+a{
+    text-decoration: none;
+}
+body{
+    font-family: arial;
+    background-image: url("./images/background.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+:root{
+    --black: black;
+    --white: white;
+    --dark: rgb(13, 13, 13);
+    --primary-color: rgb(119, 0, 255);
+    
+    --blur: blur(10px);
+    --border: rgba(255, 255, 255, 0.317);
+}
+
+
+
+/* Border Animation */
+@property --angle{
+    syntax: "<angle>";
+    initial-value: 0deg;
+    inherits: false;
+}
+
+@keyframes grad-rotate {
+    to{
+        --angle: 360deg;
+    }   
+}
+
+
+
+
+
+/* Main layout */
+.main-layout{
+    margin-top: 80px;
+    color: rgba(255, 255, 255, 0.703);
+    overflow-y: scroll;
+    scrollbar-width: none;
+}
+section{
+    padding: 50px;
+    scrollbar-width: none;
+    box-sizing: border-box;
+
+}
+section h2{
+    text-align: center;
+}
+
+
+
+
+
+/* Navbar */
+.navbar{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    justify-self: center;
+    top: 0px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 15px;
+    color: white;
+    background-color: var(--black);
+    z-index: 100;
+}
+.nav-title{
+    padding: 10px 20px;
+}
+.nav-links{
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+.nav-link{
+    color: inherit;
+    width: 100px;
+    padding: 15px 0;
+    text-align: center;
+    color: grey;
+    transition: color .3s;
+
+}
+.nav-link:hover{
+    color: var(--white);
+}
+.active-link{
+    border-bottom: 3px solid;
+    color: white;
+}
+
+
+
+/* Hero Section */
+.hero-section{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.intro-div{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+.intro-content{
+    line-height: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 50px;
+    border: 1px solid var(--border);
+    max-width: 600px;
+    border-radius: 20px;
+    backdrop-filter: var(--blur);
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.557);
+}
+.intro-content span{
+    background: linear-gradient(to right, rgb(255, 0, 255) 10%,red,rgb(255, 0, 255));
+    background-size: 200%;
+    background-clip: text;
+    color: transparent;
+    animation: bg-grad 2.5s linear infinite;
+    backdrop-filter: var(--blur);
+}
+@keyframes bg-grad{
+    to{
+        background-position: 200%;
+    }
+}
+
+
+.social-media{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 15px 20px;
+    width: 200px;
+    box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.557);
+    backdrop-filter: var(--blur);
+}
+.social-media > a{
+    color: grey;
+    border-radius: 50%;
+    padding: 10px;
+    transition: color .2s;
+    position: relative;
+}
+.social-media > a:hover{
+    color: var(--white);
+}
+.social-media > a::before{
+    content: attr(data-label);
+    position: absolute;
+    text-align: center;
+    left: -14.5px;
+    width: 70px;
+    padding: 5px;
+    border-radius: 50px;
+    transform: scale(0) translateY(0);
+    opacity: 0;
+    background: var(--bg-color);
+    transition: transform .2s,opacity .3s;
+    
+}
+.social-media > a::after{
+    content: "";
+    position: absolute;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 9px solid;
+    color: var(--bg-color);
+    bottom: 3px;
+    left: 17px;
+    transform: scale(0) translateY(0);
+    opacity: 0;
+    transition: transform .2s,opacity .3s;
+    
+}
+.social-media > a:hover::before,
+.social-media > a:hover::after{
+    transform: scale(1) translateY(-50px); 
+    opacity: 1;  
+}
+
+
+
+.action-btn-group{
+    display: flex;
+    align-items: center;
+    gap: 100px;
+}
+.action-btn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    padding: 20px 0;
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    color: var(--white);
+    background-color: var(--dark);
+    transition: all .2s;
+    position: relative;
+}
+.action-btn::before,
+.action-btn::after{
+    content: "";
+    position: absolute;
+    inset: -2px;
+    padding: 2px;
+    z-index: -1;
+    border-radius: inherit;
+    transition: animation .5s, filter .5s;
+    background: conic-gradient(from var(--angle), red,rgb(255, 0, 225),rgb(0, 42, 255),rgb(0, 255, 0),red);
+}
+.action-btn:hover::before,
+.action-btn:hover::after{
+    animation: grad-rotate 2s infinite linear;
+    
+}
+.action-btn:hover::after{
+    filter: blur(10px);
+}
+
+
+
+.image-div{
+    width: 350px;
+    height: 350px;
+    display: flex;
+    justify-content: end;
+    align-items: end;
+    transform: rotate(45deg) translate(-36px, -83px);
+    overflow: hidden;
+    border-radius: 20px;
+    animation: float 4s infinite linear;
+}
+.box{
+    height: 300px;
+    width: 300px;
+    border-radius: 20px;
+    background-color: #ffffff0c;
+    backdrop-filter: var(--blur);
+    border: 1px solid var(--border);
+    position: relative;
+}
+.image{
+    position: absolute;
+    left: -20px;
+    bottom: -60px;
+    height: 450px;
+    transform: rotate(-45deg);
+    mix-blend-mode: hard-light;
+}
+
+
+
+
+
+
+/* About Section */
+.about-section{
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    background-color: var(--black);
+}
+.about-div{
+    height: 100%;
+    border-radius: 20px;
+    padding: 50px;
+    box-sizing: border-box;
+    /* box-shadow: inset 0 0 10px rgba(255, 255, 255, 0.557);
+    border: 1px solid var(--border);
+    backdrop-filter: var(--blur); */
+}
+.about-content{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    max-width: 500px;
+}
+
+
+
+
+
+/* Skills Section */
+.skills-section{
+    background-color: var(--dark);
+    backdrop-filter: var(--blur);
+}
+.skills-div{
+    padding: 50px;
+}
+.skills-cards.first-row{
+    height: fit-content;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    padding: 40px 0;
+}
+.skills-cards.second-row{
+    height: fit-content;
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+.card{
+    height: fit-content;
+    flex: 1 0;
+    border-radius: 20px;
+    padding: 30px;
+    border: 1px solid var(--border);
+    background-color: var(--dark);
+    position: relative;
+}
+.card::before,
+.card::after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    inset: -2px;
+    padding: 2px;
+    z-index: -1;
+    border-radius: inherit;
+    background: conic-gradient(from var(--angle),red,rgb(255, 0, 225),rgb(0, 42, 255),rgb(0, 255, 0),red);
+    animation: grad-rotate 2s infinite linear;
+}
+.card::after{
+    filter: blur(10px);
+    opacity: .5;
+}
+.skill-list{
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 30px 10px;
+}
+.skill-list > div{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+
+
+
+/* Projects Section */
+.projects-section{
+    background-color: var(--black);
+}
+.projects-div{
+    padding: 50px;
+}
+.projects-cards-div{
+    padding: 40px 0;
+    gap: 30px;
+    justify-content: space-evenly;
+    display: flex;
+    flex-wrap: wrap;
+}
+.project-card{
+    height: fit-content;
+    background-color: var(--dark);
+    width: 350px;
+    border-radius: 20px;
+    overflow: hidden;
+    backdrop-filter: var(--blur);
+}
+.project-card img{
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    object-position: center;
+}
+.card-content{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    padding: 30px;
+}
+.view-project-btn{
+    width: 100%;
+}
+
+
+
+
+
+
+@media (max-width:900px) {
+    section{
+        padding: 0;
+    }
+    .hero-section{
+        padding: 50px;
+    }
+    .image-div{
+        display: none;
+    }
+    .nav-links{
+        display: none;
+    } 
+    .card-content > p{
+        font-size: small;
+    }   
+}
