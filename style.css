@@ -15,7 +15,7 @@
     --light: white;
     --light-blue: #b9e4ff;
     --muted: #b9e4ff66;
-    --deep-dark: #0c080f;
+    --deep-dark: #0c0c0c;
     --faded-dark: rgb(15, 11, 20);
 
     /* Solid Colors */
@@ -173,14 +173,77 @@ a{
     width: 100%;
     height: fit-content;
 }
-.hero-image-div,
+.hero-content-div{
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+.mywork-btn{
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 10px 15px;
+    border-radius: 20px;
+    color: var(--black);
+    background-color: var(--solid-pink);
+}
+.contact-div{
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+.contact-div div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--solid-blue);
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    cursor: var(--pointer);
+}
+.contact-div .email{
+    border: 2px solid var(--solid-blue);
+    color: var(--solid-blue);
+}
+.contact-div .github{
+    border: 2px solid var(--solid-pink);
+    color: var(--solid-pink);
+}
+.contact-div .linkedin{
+    border: 2px solid var(--yellow);
+    color: var(--yellow);
+}
+.hero-image-div{
+    width: 560px;
+    height: 320px;
+    position: relative;
+}
+.hero-image-div img{
+    height: inherit;
+    width: inherit;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+}
+.hero-image-div::before{
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    inset: -2px;
+    border-radius: 10px;
+    padding: 2px;
+    background: conic-gradient(red,blue,green,red);
+    filter: blur(8px);
+    z-index: -1;
+}
 .about-image-div{
     height: 500px;
     width: 400px;
     background-color: var(--solid-blue);
     transform: rotate(7deg);
 }
-.hero-image-div img,
 .about-image-div img{
     margin: 20px;
     object-fit: cover;
@@ -197,7 +260,7 @@ a{
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    backdrop-filter: blur(100px);
+    background-color: var(--deep-dark);
     height: 100%;
     width: 100%;
     border: 1px solid rgb(31, 25, 25);
@@ -424,8 +487,11 @@ a{
 .hobby-card.cosmology{
     top: 180px;
 }
-.hobby-card.eee{
+.hobby-card.quantum{
     top: 220px;
+}
+.hobby-card.electronics{
+    top: 260px;
 }
 .hobby-image-div{
     border-radius: 20px;
@@ -443,4 +509,26 @@ a{
 .hobby-content{
     color: var(--muted);
     width: 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+/* .footer{
+    width: 100%;
+    height: 400px;
+    background-color: var(--deep-dark);
+    color: var(--muted);
+}
+.top{
+    padding: 30px;
+    height: 320px;
+} */
+.bottom{
+    height: 80px;
+    text-align: center;
+    border-top: 1px solid rgb(41, 41, 41);
+}
+.bottom>p{
+    line-height: 80px;
 }
